@@ -1,0 +1,93 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<div class="rhino-block-container" data-section-id="{{ section.id }}" data-section-type="rhino-block">
+  {% for block in section.blocks %}
+    {% if block.type == "rhino-block" %}
+      {% include 'rhino-block' %}
+    {% elsif block.type == "header-block" %}
+      {% include 'header-block' %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "ARC Product Page",
+  "max_blocks": 7,
+  "blocks": [
+    {
+      "type": "header-block",
+      "name": "Header Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "top_title",
+          "label": "Title",
+          "default": "Product Name"
+        },
+        {
+          "type": "text",
+          "id": "tagline",
+          "label": "Tag Line",
+          "default": "Add a Tag Line"
+        },
+        {
+          "type": "radio",
+          "id": "align",
+          "label": "Text Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "radio",
+          "id": "size",
+          "label": "Size",
+          "options": [
+            { "value": "small", "label": "Small (400px)" },
+            { "value": "medium", "label": "Medium (600px)" },
+            { "value": "large", "label": "Large (750px)" }
+          ],
+          "default": "medium"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        }
+      ]
+    },
+    {
+      "type": "rhino-block",
+      "name": "Rhino Flex Block",
+      "settings": [
+        {
+          "type": "radio",
+          "id": "align",
+          "label": "Text-Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "radio",
+          "id": "size",
+          "label": "Size",
+          "options": [
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" }
+          ],
+          "default": "medium"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,84 @@
+/* Rhino Header */
+.header-block{
+
+  position: relative;
+  color: white;
+  padding: 0 $page_padding;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  p {
+    color: white;
+  }
+  .rte-container {
+    position: absolute;
+    top: 20%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .rte-center{
+    text-align: center;
+  }
+  .rte-left{
+    text-align: left;
+  }
+  .rte-right{
+    text-align: right;
+  }
+  &.large{
+    height: 750px;
+  }
+  &.medium{
+    height: 600px;
+  }
+  &.small{
+    height: 400px;
+  }
+  .btn {
+    color: #D8D8D8;
+    text-transform: none;
+    width: 250px;
+    border-color: #ffffff;
+
+    &.border{
+      background-color: rgba(0,0,0,.2);
+
+      &:hover{
+        color: lighten(#D8D8D8, 20%);
+        border-color: lighten(#D8D8D8, 20%);
+        &:before, &:after{
+          border-color: lighten(#D8D8D8, 20%);
+        }
+      }
+    }
+
+  }
+
+}
+
+@media (max-width: $big_phone_max_width){
+  .rich-text{
+    padding: 0 $mobile_page_padding;
+    #rte{
+      margin: 30px auto;
+    }
+  }
+}
+
+.pages-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pages-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.page-container {
+  width: 275px;
+  height: 415px;
+  background-color: silver;
+  margin-bottom: 35px;
+}

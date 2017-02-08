@@ -1,0 +1,9 @@
+{% case product.title %}
+  {% when 'Arc TEST' %}
+    {% section 'product-arc' %}
+  {% when 'Rhino Flywheel' %}
+    {% section 'product-flywheel' %}
+  {% else %}
+    {% section 'product-template' %}
+    {% section 'related-products-template' %}
+{% endcase %}
