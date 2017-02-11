@@ -20,27 +20,8 @@
       "name": "Header Block",
       "settings": [
         {
-          "type": "text",
-          "id": "top_title",
-          "label": "Title",
-          "default": "Product Name"
-        },
-        {
-          "type": "text",
-          "id": "tagline",
-          "label": "Tag Line",
-          "default": "Add a Tag Line"
-        },
-        {
-          "type": "radio",
-          "id": "align",
-          "label": "Text Alignment",
-          "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right", "label": "Right" }
-          ],
-          "default": "left"
+          "type": "header",
+          "content": "General Layout"
         },
         {
           "type": "radio",
@@ -54,8 +35,107 @@
           "default": "medium"
         },
         {
+          "type": "radio",
+          "id": "flex_horizontal_position",
+          "label": "Horizontal Position",
+          "options": [
+            { "value": "flex-start", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "flex-end", "label": "Right" }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "radio",
+          "id": "flex_vertical_position",
+          "label": "Vertical Position",
+          "options": [
+            { "value": "flex-start", "label": "Top" },
+            { "value": "center", "label": "Center" },
+            { "value": "flex-end", "label": "Bottom" }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "text",
+          "id": "padding-horizontal",
+          "label": "Horizontal Padding",
+          "default": "20%",
+          "info": "Enter '##px' or '##%'."
+        },
+        {
+          "type": "text",
+          "id": "padding-vertical",
+          "label": "Vertical Padding",
+          "default": "20%"
+        },
+        {
+          "type": "header",
+          "content": "Text Content"
+        },
+        {
+          "type": "text",
+          "id": "top_title",
+          "label": "Title",
+          "default": "Product Name"
+        },
+        {
+          "type": "text",
+          "id": "tagline",
+          "label": "Tag Line",
+          "default": "Add a Tag Line"
+        },
+        {
+          "type": "number",
+          "id": "tagline-padding",
+          "label": "Tagline Padding",
+          "default": 0,
+          "info": "Enter Number of Pixels"
+        },
+        {
+          "type": "radio",
+          "id": "align",
+          "label": "Text Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_price",
+          "label": "Show Product Price",
+          "default": true
+        },
+        {
+          "type": "number",
+          "id": "price-padding",
+          "label": "Price Top-Padding",
+          "default": 30,
+          "info": "Enter Number of Pixels"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_buy_button",
+          "label": "Show Button",
+          "default": true
+        },
+        {
+          "type": "number",
+          "id": "button-padding",
+          "label": "Button Top-Padding",
+          "default": 20,
+          "info": "Enter Number of Pixels"
+        },
+        {
+          "type": "header",
+          "content": "Background Image"
+        },
+        {
           "type": "image_picker",
-          "id": "image",
+          "id": "background",
           "label": "Background Image"
         }
       ]
@@ -65,9 +145,95 @@
       "name": "Rhino Flex Block",
       "settings": [
         {
+          "type": "header",
+          "content": "General Layout"
+        },
+        {
           "type": "radio",
-          "id": "align",
-          "label": "Text-Alignment",
+          "id": "size",
+          "label": "Size",
+          "options": [
+            { "value": "small", "label": "Small (400px)" },
+            { "value": "medium", "label": "Medium (600px)" },
+            { "value": "large", "label": "Large (750px)" }
+          ],
+          "default": "medium"
+        },
+        {
+          "type": "radio",
+          "id": "flex_horizontal_position",
+          "label": "Horizontal Position",
+          "options": [
+            { "value": "flex-start", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "flex-end", "label": "Right" }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "radio",
+          "id": "flex_vertical_position",
+          "label": "Vertical Position",
+          "options": [
+            { "value": "flex-start", "label": "Top" },
+            { "value": "center", "label": "Center" },
+            { "value": "flex-end", "label": "Bottom" }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "image_picker",
+          "id": "background",
+          "label": "Background Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "flip_background",
+          "label": "Flip Background",
+          "default": false,
+          "info": "Will reverse Horizontal Alignment"
+        },
+        {
+          "type": "text",
+          "id": "color",
+          "label": "Text Color",
+          "default": "white"
+        },
+        {
+          "type": "text",
+          "id": "padding-horizontal",
+          "label": "Inner Content Horizontal Padding",
+          "default": "20%",
+          "info": "Enter '##px' or '##%'."
+        },
+        {
+          "type": "text",
+          "id": "padding-vertical",
+          "label": "Inner Content Vertical Padding",
+          "default": "20%",
+          "info": "Enter '##px' or '##%'."
+        },
+
+
+
+        {
+          "type": "header",
+          "content": "First Block"
+        },
+        {
+          "type": "text",
+          "id": "rbi_1_title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "rbi_1_text",
+          "label": "Text"
+        },
+        {
+          "type": "radio",
+          "id": "rbi_1_align",
+          "label": "Text Alignment",
           "options": [
             { "value": "left", "label": "Left" },
             { "value": "center", "label": "Center" },
@@ -76,16 +242,79 @@
           "default": "left"
         },
         {
+          "type": "number",
+          "id": "rbi_1_text_padding",
+          "label": "Text Padding",
+          "default": 0,
+          "info": "Enter a Number"
+        },
+        {
+          "type": "image_picker",
+          "id": "rbi_1_image",
+          "label": "First Block Image"
+        },
+
+
+
+
+        {
+          "type": "header",
+          "content": "Second Block"
+        },
+        {
+          "type": "text",
+          "id": "rbi_2_title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "rbi_2_text",
+          "label": "Text"
+        },
+        {
           "type": "radio",
-          "id": "size",
-          "label": "Size",
+          "id": "rbi_2_align",
+          "label": "Text Alignment",
           "options": [
-            { "value": "small", "label": "Small" },
-            { "value": "medium", "label": "Medium" },
-            { "value": "large", "label": "Large" }
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
           ],
-          "default": "medium"
+          "default": "left"
+        },
+        {
+          "type": "number",
+          "id": "rbi_2_text_padding",
+          "label": "Text Padding",
+          "default": 0,
+          "info": "Enter a Number"
+        },
+        {
+          "type": "image_picker",
+          "id": "rbi_2_image",
+          "label": "Second Block Image"
+        },
+
+
+
+        {
+          "type": "header",
+          "content": "Convenience"
+        },
+        {
+          "type": "checkbox",
+          "id": "flip_flex",
+          "label": "Flip Boxes",
+          "default": false
         }
+
+
+
+
+
+
+
+
       ]
     }
   ]
