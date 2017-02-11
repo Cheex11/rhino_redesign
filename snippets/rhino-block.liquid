@@ -1,33 +1,49 @@
-<div class="featured-product" {{ block.shopify_attributes }}>
-  <div class="image">
-    <div class="container">
-      <div class="right">
-        PICTURE HERE
+<div class="rhino-block rhino-block-{{ block.id }} {{ block.settings.size }}">
+
+  {% if block.settings.background != blank %}
+    {% include 'set-rhino-block-background' %}
+  {% endif %}
+
+  <!-- rbi stands for "rhino block inner" -->
+  <div class="rbi-1-container">
+
+    <div class='rbi-1-text-container'>
+      <h1 class="rbi-1-title"> {{ block.settings.rbi_1_title }} </h1>
+
+      <div class="rbi-1-text">
+        {{ block.settings.rbi_1_text }}
       </div>
+    </div>
+
+
+    <div class='rbi-1-media-container'>
+      {% if block.settings.rbi_1_image != blank %}
+        <div class="rbi-1-image">
+          <img src="{{ block.settings.rbi_1_image | img_url: '1024x' }}">
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+
+  <div class="rbi-2-container">
+    <div class='rbi-2-text-container'>
+      <h1 class="rbi-2-title"> {{ block.settings.rbi_2_title }} </h1>
+
+      <div class="rbi-2-text">
+        {{ block.settings.rbi_2_text }}
+      </div>
+    </div>
+    <div class='rbi-2-media-container'>
+      {% if block.settings.rbi_2_image != blank %}
+        <div class="rbi-2-image">
+          <img src="{{ block.settings.rbi_2_image | img_url: '1024x' }}">
+        </div>
+      {% endif %}
     </div>
   </div>
-  <a class="info" href="{{ product.url }}">
-    <div class="container">
-      <div class="left">
-        <div class="table">
-          <div class="cell">
-            <div>
-              <div class="title">
-                TITLE
-              </div>
-              <div class="title mobile">
-                MOBILE TITLE
-              </div>
-              <div class="price">
-                <span class='money'>TEXT</span>
-              </div>
-            </div>
-            <div class="button">
-              BUTTON
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </a>
+
+  {% include 'set-rhino-block-settings' %}
+
+
 </div>

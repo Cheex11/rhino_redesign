@@ -1,0 +1,29 @@
+<style type="text/css">
+  .rhino-block-{{ block.id }} {
+    -webkit-box-pack: {{ block.settings.flex_horizontal_position }};
+    -ms-flex-pack: {{ block.settings.flex_horizontal_position }};
+    justify-content: {{ block.settings.flex_horizontal_position }};
+
+    -webkit-box-align: {{ block.settings.flex_vertical_position }};
+    -ms-flex-align: {{ block.settings.flex_vertical_position }};
+    align-items: {{ block.settings.flex_vertical_position }};
+
+    padding: {{ block.settings.padding-vertical }}px {{ block.settings.padding-horizontal }}px;
+
+  }
+
+  .rhino-block-{{ block.id }} .tagline {
+    padding-top: {{ block.settings.tagline-padding }}px;
+  }
+
+  .rhino-block-{{ block.id }} .product-price {
+    padding-top: {{ block.settings.price-padding }}px;
+  }
+
+  .rhino-block-{{ block.id }} .button {
+    padding-top: {{ block.settings.button-padding }}px;
+  }
+
+</style>
+
+
