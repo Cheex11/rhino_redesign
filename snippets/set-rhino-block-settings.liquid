@@ -2,16 +2,11 @@
   .rhino-block-{{ block.id }} {
 
     color: {{ block.settings.color }};
-
-    -webkit-box-pack: {{ block.settings.flex_horizontal_position }};
-    -ms-flex-pack: {{ block.settings.flex_horizontal_position }};
-    justify-content: {{ block.settings.flex_horizontal_position }};
-
-    -webkit-box-align: {{ block.settings.flex_vertical_position }};
-    -ms-flex-align: {{ block.settings.flex_vertical_position }};
-    align-items: {{ block.settings.flex_vertical_position }};
-
-    padding: {{ block.settings.padding-vertical }} {{ block.settings.padding-horizontal }};
+    height: {{ block.settings.size }};
+    {% if block.settings.contain_width %}
+      max-width: 1600px;
+      margin: 0 auto;
+    {% endif %}
 
     {% if block.settings.flip_background %}
       -moz-transform: scaleX(-1);
@@ -28,9 +23,28 @@
 
   }
 
+  .rhino-block-{{ block.id }} .rhino-block-content {
+    color: {{ block.settings.color }};
+    justify-content: {{ block.settings.flex_horizontal_position }};
+    align-items: {{ block.settings.flex_vertical_position }};
+  }
+
+  {% if block.settings.mobile_swap %}
+    @media (max-width: 950px) {
+      .rhino-block-{{ block.id }} .rhino-block-content {
+        flex-direction: column;
+        justify-content: space-around;
+      }
+    }
+  {% endif %}
+
   .rhino-block-{{ block.id }} .rbi-1-container {
     text-align: {{ block.settings.rbi_1_align }};
-    padding-top: {{ block.settings.rbi_1_container_padding }}px;
+
+    margin-top: {{ block.settings.rbi_1_margin_top }};
+    margin-bottom: {{ block.settings.rbi_1_margin_bottom }};
+    margin-left: {{ block.settings.rbi_1_margin_left }};
+    margin-right: {{ block.settings.rbi_1_margin_right }};
 
     {% if block.settings.flip_background %}
       -moz-transform: scaleX(-1);
@@ -40,13 +54,75 @@
       filter: FlipH;
       -ms-filter: "FlipH";
     {% endif %}
+
+
+    {% if block.settings.rb_video %}
+      width: 100%;
+    {% endif %}
+
+    max-width: {{  block.settings.midpoint }}%;
+  }
+
+  .rhino-block-{{ block.id }} .rbi-2-container {
+    text-align: {{ block.settings.rbi_2_align }};
+    {% if block.settings.rbi_2_video != blank %}
+    text-align: center;
+    {% endif %}
+
+    margin-top: {{ block.settings.rbi_2_margin_top }};
+    margin-bottom: {{ block.settings.rbi_2_margin_bottom }};
+    margin-left: {{ block.settings.rbi_2_margin_left }};
+    margin-right: {{ block.settings.rbi_2_margin_right }};
+
+    {% if block.settings.flip_background %}
+      -moz-transform: scaleX(-1);
+      -o-transform: scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      filter: FlipH;
+      -ms-filter: "FlipH";
+    {% endif %}
+
+    {% if block.settings.rbi_1_title == blank and block.settings.rbi_1_text == blank and block.settings.rb_video == blank and block.settings.rbi_1_image == blank %}
+      max-width: 80%;
+    {% endif %}
+
+    max-width: {{ 100 | minus: block.settings.midpoint }};
   }
 
   .rhino-block-{{ block.id }} .rbi-1-text {
     text-align: {{ block.settings.rbi_1_align }};
-    padding-top: {{ block.settings.rbi_1_text_padding }}px;
+    margin-top: {{ block.settings.rbi_1_text_margin }}px;
+  }
+
+  .rhino-block-{{ block.id }} .rbi-2-text {
+    text-align: {{ block.settings.rbi_2_align }};
+    margin-top: {{ block.settings.rbi_2_text_padding }}px;
+  }
+
+  .rhino-block-{{ block.id }} .rbi-1-image {
+    padding-top: {{ block.settings.rbi_1_image_padding }}px;
+  }
+  .rhino-block-{{ block.id }} .rbi-2-image {
+    padding-top: {{ block.settings.rbi_2_image_padding }}px;
   }
 
 </style>
+
+<script>
+  var flexes = document.getElementsByClassName("ph-flex")
+
+  var div = document.createElement('div');
+  div.innerHTML = "{{ block.settings.header_text }}";
+  div.setAttribute('class', 'ph-menu-item');
+
+  for(var i = 0; i < flexes.length; i++) {
+     flexes[i].appendChild(div)
+  }
+</script>
+
+
+
+
 
 

@@ -1,0 +1,6 @@
+{% assign video_title = block.settings.rb_video %}
+
+<video class="flex-video" id="flex-video-{{ block.id }}">
+  <source src="{{ video_title | asset_url }}" type="video/mp4">
+  Your browser does not support the video tag.
+</video>

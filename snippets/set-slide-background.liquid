@@ -1,0 +1,36 @@
+<style type="text/css">
+  .slideshow-image-{{ block.id }} {
+    background-position: center {{ block.settings.alignment }};
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  {% if block.settings.image != blank %}
+    @media screen and (max-width: 600px) {
+      .slideshow-image-{{ block.id }} {
+        background-image: url('{{ block.settings.image | img_url: '800x' }}');
+      }
+    }
+
+    @media screen and (min-width: 601px) and (max-width: 1024px) {
+      .slideshow-image-{{ block.id }} {
+        background-image: url('{{ block.settings.image | img_url: '1024x' }}');
+      }
+    }
+
+    @media screen and (min-width: 1025px) and (max-width: 1600px) {
+      .slideshow-image-{{ block.id }} {
+        background-image: url('{{ block.settings.image | img_url: '1600x' }}');
+      }
+    }
+
+    @media screen and (min-width: 1601px) {
+      .slideshow-image-{{ block.id }} {
+        background-image: url('{{ block.settings.image | img_url: '2048x' }}');
+      }
+    }
+  {% else %}
+    .slideshow-image-{{ block.id }} {
+      background-image: url('{{ 'dummie-slide.jpg' | asset_url }}');
+    }
+  {% endif %}
+</style>

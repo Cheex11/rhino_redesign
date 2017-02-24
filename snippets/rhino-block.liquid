@@ -1,49 +1,65 @@
-<div class="rhino-block rhino-block-{{ block.id }} {{ block.settings.size }}">
+<div class="rhino-block rhino-block-{{ block.id }}">
 
   {% if block.settings.background != blank %}
     {% include 'set-rhino-block-background' %}
   {% endif %}
 
-  <!-- rbi stands for "rhino block inner" -->
-  <div class="rbi-1-container">
+  {% if block.settings.background_shadow %}
+    <div class='rhino-block-overlay'></div>
+  {% endif %}
 
-    <div class='rbi-1-text-container'>
-      <h1 class="rbi-1-title"> {{ block.settings.rbi_1_title }} </h1>
+  {% if block.settings.rb_video != blank %}
+    {% include 'set-rhino-block-video' %}
+  {% endif %}
 
-      <div class="rbi-1-text">
-        {{ block.settings.rbi_1_text }}
-      </div>
+  <div class="rhino-block-content {% if block.settings.stack_columns %} vertical {% endif %}">
+
+    <!-- rbi stands for "rhino block inner" -->
+    <div class="rbi-1-container">
+      {% if block.settings.rb_video != blank %}
+        <img class="play-button" src="{{ 'play_overlay.svg' | asset_url }}" >
+      {% else %}
+        <div class='rbi-1-text-container'>
+          <h1 class="rbi-1-title">{{ block.settings.rbi_1_title }}</h1>
+          <div class="rbi-1-text">
+            {{ block.settings.rbi_1_text }}
+          </div>
+        </div>
+        {% if block.settings.rbi_1_image != blank %}
+          <img class="rbi-1-image" src="{{ block.settings.rbi_1_image | img_url: '1024x' }}">
+        {% endif %}
+      {% endif %}
     </div>
 
+    <div class="rbi-2-container">
+      {% if block.settings.rbi_2_video != blank %}
 
-    <div class='rbi-1-media-container'>
-      {% if block.settings.rbi_1_image != blank %}
-        <div class="rbi-1-image">
-          <img src="{{ block.settings.rbi_1_image | img_url: '1024x' }}">
+        {% assign rbi_2_video_title = block.settings.rbi_2_video %}
+
+        <img class="play-button-inner" src="{{ 'play_overlay.svg' | asset_url }}" >
+        <video class="inner-video" id="inner-video-{{ block.id }}">
+          <source src="{{ rbi_2_video_title | asset_url }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+      {% else %}
+        <div class='rbi-2-text-container'>
+          <h1 class="rbi-2-title"> {{ block.settings.rbi_2_title }} </h1>
+
+          <div class="rbi-2-text">
+            {{ block.settings.rbi_2_text }}
+          </div>
+        </div>
+        <div class='rbi-2-media-container'>
+          {% if block.settings.rbi_2_image != blank %}
+            <img class="rbi-2-image" src="{{ block.settings.rbi_2_image | img_url: '1024x' }}">
+          {% endif %}
         </div>
       {% endif %}
     </div>
 
-  </div>
-
-  <div class="rbi-2-container">
-    <div class='rbi-2-text-container'>
-      <h1 class="rbi-2-title"> {{ block.settings.rbi_2_title }} </h1>
-
-      <div class="rbi-2-text">
-        {{ block.settings.rbi_2_text }}
-      </div>
-    </div>
-    <div class='rbi-2-media-container'>
-      {% if block.settings.rbi_2_image != blank %}
-        <div class="rbi-2-image">
-          <img src="{{ block.settings.rbi_2_image | img_url: '1024x' }}">
-        </div>
-      {% endif %}
-    </div>
   </div>
 
   {% include 'set-rhino-block-settings' %}
-
 
 </div>

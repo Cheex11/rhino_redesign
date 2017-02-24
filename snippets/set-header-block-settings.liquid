@@ -1,15 +1,16 @@
 <style type="text/css">
   .rhino-block-{{ block.id }} {
-    -webkit-box-pack: {{ block.settings.flex_horizontal_position }};
-    -ms-flex-pack: {{ block.settings.flex_horizontal_position }};
+    height: {{ block.settings.size }};
+    {% if block.settings.contain_width %}
+      max-width: 1600px;
+      margin: 0 auto;
+    {% endif %}
+  }
+
+  .rhino-block-{{ block.id }} .header-block-content {
     justify-content: {{ block.settings.flex_horizontal_position }};
-
-    -webkit-box-align: {{ block.settings.flex_vertical_position }};
-    -ms-flex-align: {{ block.settings.flex_vertical_position }};
     align-items: {{ block.settings.flex_vertical_position }};
-
-    padding: {{ block.settings.padding-vertical }}px {{ block.settings.padding-horizontal }}px;
-
+    text-align: {{ block.settings.align }};
   }
 
   .rhino-block-{{ block.id }} .tagline {
