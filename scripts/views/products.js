@@ -2,12 +2,12 @@ var ajaxCart = (function($) {
   $(document).ready(function() {
     var product = Shopify.current_product;
       if (!product) { return; }
+      if (Shopify.template.indexOf('custom') > 0) { return; }
 
     // Video Controls
     function playPause(block) {
       video = $(block).find('.flex-video')
       video_dom = $(block).find('.flex-video').get(0)
-
       video.css("display","block");
       block.find('.rhino-block-content').fadeOut( "slow", function() { });
       video_dom.play();
@@ -17,11 +17,6 @@ var ajaxCart = (function($) {
       video = $(block).find('.inner-video')
       video_dom = $(block).find('.inner-video').get(0)
       video_dom.play();
-      // if (video_dom.paused) {
-      //   video_dom.play();
-      // } else {
-      //   video_dom.pause();
-      // }
     }
 
     $('.play-button').click(function(event) {
@@ -47,6 +42,11 @@ var ajaxCart = (function($) {
     });
 
     // Scrolling Header
+    $('.ph-title').click(function(event) {
+      event.preventDefault();
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+    });
+
     $('.ph-menu-item').click(function(event) {
       event.preventDefault();
 

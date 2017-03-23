@@ -1,8 +1,19 @@
-{% case product.title %}
-  {% when 'Arc TEST' %}
+{% case product.handle %}
+
+  {% comment %}
+  {% when 'rhino-slider-evo' %}
+    {% section 'product-evo' %}
+  {% endcomment %}
+
+  {% when 'rhino-motion' %}
+    {% section 'product-motion' %}
+
+  {% when 'rhino-arc' %}
     {% section 'product-arc' %}
-  {% when 'Rhino Flywheel' %}
+
+  {% when 'rhino-flywheel' %}
     {% section 'product-flywheel' %}
+
   {% else %}
     {% section 'product-template' %}
     {% section 'related-products-template' %}

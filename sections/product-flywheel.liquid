@@ -12,7 +12,7 @@
 
 {% schema %}
 {
-  "name": "ARC Product Page",
+  "name": "Flywheel Page",
   "max_blocks": 12,
   "blocks": [
     {
@@ -260,11 +260,6 @@
           "label": "Link URL (http://...)"
         },
         {
-          "type":"text",
-          "id":"rbi_1_link_text_color",
-          "label":"Link Color"
-        },
-        {
           "type": "image_picker",
           "id": "rbi_1_image",
           "label": "First Block Image"
@@ -338,6 +333,11 @@
           "default": 50
         },
         {
+          "type":"text",
+          "id":"rbi_1_link_text_color",
+          "label":"Link Color"
+        },
+        {
           "type": "header",
           "content": "Second Block"
         },
@@ -364,11 +364,6 @@
           "type": "text",
           "id": "rbi_2_link_URL",
           "label": "Link URL (http://...)"
-        },
-        {
-          "type":"text",
-          "id":"rbi_2_link_text_color",
-          "label":"Link Color"
         },
         {
           "type": "image_picker",
@@ -443,6 +438,11 @@
           "default": 50
         },
         {
+          "type":"text",
+          "id":"rbi_2_link_text_color",
+          "label":"Link Color"
+        },
+        {
           "type": "header",
           "content": "Video Options"
         },
@@ -458,17 +458,6 @@
           "label": "Name for IN-COLUMN Video File",
           "info": "Will make the second column a video."
         },
-
-
-        {
-          "type": "checkbox",
-          "id": "use_dark_video_overlay",
-          "label": "Use Dark Play Button",
-          "default": false
-        },
-
-
-
         {
           "type": "header",
           "content": "Additional"

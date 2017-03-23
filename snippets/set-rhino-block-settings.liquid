@@ -1,8 +1,8 @@
 <style type="text/css">
   .rhino-block-{{ block.id }} {
-
     color: {{ block.settings.color }};
     height: {{ block.settings.size }};
+
     {% if block.settings.contain_width %}
       max-width: 1600px;
       margin: 0 auto;
@@ -16,11 +16,6 @@
       filter: FlipH;
       -ms-filter: "FlipH";
     {% endif %}
-
-    {% if block.settings.flip_flex %}
-      flex-direction: row-reverse;
-    {% endif %}
-
   }
 
   .rhino-block-{{ block.id }} .rhino-block-content {
@@ -40,11 +35,7 @@
 
   .rhino-block-{{ block.id }} .rbi-1-container {
     text-align: {{ block.settings.rbi_1_align }};
-
-    margin-top: {{ block.settings.rbi_1_margin_top }};
-    margin-bottom: {{ block.settings.rbi_1_margin_bottom }};
-    margin-left: {{ block.settings.rbi_1_margin_left }};
-    margin-right: {{ block.settings.rbi_1_margin_right }};
+    padding: {{ block.settings.rbi_1_margin_top }} {{ block.settings.rbi_1_margin_right }} {{ block.settings.rbi_1_margin_bottom }} {{ block.settings.rbi_1_margin_left }};
 
     {% if block.settings.flip_background %}
       -moz-transform: scaleX(-1);
@@ -56,11 +47,12 @@
     {% endif %}
 
 
-    {% if block.settings.rb_video %}
-      width: 100%;
+    {% if block.settings.rb_video != blank %}
+      width: 50%;
     {% endif %}
-
-    max-width: {{  block.settings.midpoint }}%;
+    {% if block.settings.enable_set_widths %}
+      width: {{ block.settings.midpoint }}%;
+    {% endif %}
   }
 
   .rhino-block-{{ block.id }} .rbi-2-container {
@@ -68,11 +60,7 @@
     {% if block.settings.rbi_2_video != blank %}
     text-align: center;
     {% endif %}
-
-    margin-top: {{ block.settings.rbi_2_margin_top }};
-    margin-bottom: {{ block.settings.rbi_2_margin_bottom }};
-    margin-left: {{ block.settings.rbi_2_margin_left }};
-    margin-right: {{ block.settings.rbi_2_margin_right }};
+    padding: {{ block.settings.rbi_2_margin_top }} {{ block.settings.rbi_2_margin_right }} {{ block.settings.rbi_2_margin_bottom }} {{ block.settings.rbi_2_margin_left }};
 
     {% if block.settings.flip_background %}
       -moz-transform: scaleX(-1);
@@ -87,17 +75,49 @@
       max-width: 80%;
     {% endif %}
 
-    max-width: {{ 100 | minus: block.settings.midpoint }};
+    {% if block.settings.enable_set_widths %}
+      width: {{ 100 | minus: block.settings.midpoint }}%;
+      margin: 0 auto;
+    {% endif %}
   }
 
+  {% if block.settings.rbi_2_video != blank %}
+    @media (max-width: 950px) {
+      .rhino-block-{{ block.id }} .rbi-2-container {
+        display: none;
+      }
+    }
+  {% endif %}
+
   .rhino-block-{{ block.id }} .rbi-1-text {
+    margin: 0 auto;
     text-align: {{ block.settings.rbi_1_align }};
-    margin-top: {{ block.settings.rbi_1_text_margin }}px;
+    margin-top: {{ block.settings.rbi_1_title_text_padding }}px;
+    max-width: {{ block.settings.rbi_1_text_max_width }}px;
+    {% if block.settings.rbi_1_align contains 'center' %}
+    {% else %}
+    float: {{ block.settings.rbi_1_align }};
+    {% endif %}
   }
 
   .rhino-block-{{ block.id }} .rbi-2-text {
+    margin: 0 auto;
     text-align: {{ block.settings.rbi_2_align }};
-    margin-top: {{ block.settings.rbi_2_text_padding }}px;
+    margin-top: {{ block.settings.rbi_2_title_text_padding }}px;
+    max-width: {{ block.settings.rbi_2_text_max_width }}px;
+    {% if block.settings.rbi_2_align contains 'center' %}
+    {% else %}
+      float: {{ block.settings.rbi_2_align }};
+    {% endif %}
+  }
+
+
+  .rhino-block-{{ block.id }} .rbi-1-link {
+    padding-top: {{ block.settings.rbi_1_link_padding }}px;
+  }
+
+  .rhino-block-{{ block.id }} .rbi-2-link {
+    padding-top: {{ block.settings.rbi_2_link_padding }}px;
   }
 
   .rhino-block-{{ block.id }} .rbi-1-image {
@@ -106,6 +126,21 @@
   .rhino-block-{{ block.id }} .rbi-2-image {
     padding-top: {{ block.settings.rbi_2_image_padding }}px;
   }
+
+  .rhino-block-{{ block.id }} .rbi-1-text-container .rbi-1-text .rbi-1-link {
+    color: {{ block.settings.rbi_1_link_text_color }} !important;
+  }
+  .rhino-block-{{ block.id }} .rbi-2-text-container .rbi-2-text .rbi-2-link {
+    color: {{ block.settings.rbi_2_link_text_color }} !important;
+  }
+
+  {% if block.settings.rb_video != blank %}
+    @media (max-width: 950px) {
+      .rhino-block-{{ block.id }} .rbi-1-container {
+        display: none !important;
+      }
+    }
+  {% endif %}
 
 </style>
 
@@ -120,9 +155,3 @@
      flexes[i].appendChild(div)
   }
 </script>
-
-
-
-
-
-

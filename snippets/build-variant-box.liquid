@@ -1,0 +1,31 @@
+{% for option in product.options_with_values %}
+  <div class='option-heading'>Choose your {{ option.name }}:</div>
+    <fieldset class="single-option-radio option-flex-container"
+      data-option="option1"
+      name="{{ option.name }}"
+      id="ProductSelect-option-{{ forloop.index0 }}">
+      {% for value in option.values %}
+        {% assign variant_label_state = true %}
+        {% if product.options.size == 1 %}
+          {% unless product.variants[forloop.index0].available  %}
+            {% assign variant_label_state = false %}
+          {% endunless %}
+        {% endif %}
+          <div class='option variant'>
+            <input type="radio"
+              {% if option.selected_value == value %} checked="checked"{% endif %}
+              {% unless variant_label_state %} disabled="disabled"{% endunless %}
+              value="{{ value | escape }}"
+              name="{{ option.name }}"
+              class="single-option-selector
+                    {% unless variant_label_state %} disabled{% endunless %}"
+              data-option-index="{{ forloop.index0 }}"
+              data-product-handle="{{ product.handle }}"
+              id="ProductSelect-option-{{ option.name }}-{{ value | escape }}">
+            <label for="ProductSelect-option-{{ option.name }}-{{ value | escape }}"{% unless variant_label_state %}
+              class="disabled"{% endunless %}>{{ value | escape }}</label>
+          </div>
+      {% endfor %}
+    </fieldset>
+{% endfor %}
+{% include 'customize-backend' %}

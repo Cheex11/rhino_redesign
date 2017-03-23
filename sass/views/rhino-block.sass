@@ -1,32 +1,184 @@
-/* Rhino Header */
-.rhino-block
-  display: -webkit-box
-  display: -ms-flexbox
-  display: flex
-  color: white
-  position: relative
-  background-size: cover
-  background-repeat: no-repeat
+.rhino-block-container
+  line-height: 30px
+  font-weight: 300
+  font-family: "Lato", Tahoma
 
-  p
-    color: white
+  .rhino-block
+    z-index: 3
+    position: relative
+    background-size: cover
+    background-repeat: no-repeat
 
-  &.large
-    height: 750px
+    .rhino-block-overlay
+      top: 0
+      left: 0
+      z-index: 1
+      width: 100%
+      height: 100%
+      position: absolute
+      pointer-events: none
+      background-color: rgba(0,0,0,.4)
 
-  &.medium
-    height: 600px
+    .rhino-block-content
+      z-index: 10
+      height: 100%
+      display: flex
+      padding: 20px
+      margin: 0 auto
+      max-width: 1200px
+      position: relative
 
-  &.small
-    height: 400px
+      .rbi-1-container
+        z-index: 999
+        display: flex
+        flex-direction: column
 
-  .rbi-1-container
-    max-width: 600px
-    display: -webkit-box
-    display: -ms-flexbox
-    display: flex
-    flex-direction: column
+        .rbi-1-image
+          max-width: 100%
 
-    img
-      max-width: 100%
+        .rbi-1-text-container
 
+          .rbi-1-title
+            font-size: 48px
+            line-height: 53px
+
+            +respond-to("medium")
+              font-size: 38px
+              line-height: 41px
+
+            +respond-to("small")
+              font-size: 25px
+              line-height: 35px
+
+          .rbi-1-text
+            font-size: 20px
+            line-height: 34px
+
+            +respond-to("small")
+              font-size: 16px
+              line-height: 27px
+
+            .rbi-1-link
+              opacity: 0.8
+              color: white
+              font-size: 18px
+              font-weight: 300
+              text-decoration: none
+              transition: all .3s
+              -webkit-transition: all .3s
+
+              &:hover
+                opacity: 1
+
+            .link-arrow
+              width: 12px
+              height: 12px
+              display: inline-block
+              padding-right: 5px
+
+      .rbi-2-container
+        position: relative
+
+        .rbi-2-text-container
+
+          .rbi-2-title
+            font-size: 48px
+            line-height: 53px
+
+            +respond-to("medium")
+              font-size: 38px
+              line-height: 41px
+
+            +respond-to("small")
+              font-size: 25px
+              line-height: 35px
+
+          .rbi-2-text
+            font-size: 20px
+            line-height: 34px
+
+            +respond-to("small")
+              font-size: 16px
+              line-height: 27px
+
+            .rbi-2-link
+              opacity: 0.8
+              color: white
+              font-size: 18px
+              font-weight: 300
+              text-decoration: none
+              transition: all .3s
+              -webkit-transition: all .3s
+
+              &:hover
+                opacity: 1
+
+            .link-arrow
+              width: 12px
+              height: 12px
+              display: inline-block
+              padding-right: 5px
+
+        .rbi-2-image
+          max-width: 100%
+
+      &.vertical
+        flex-direction: column
+        justify-content: space-around
+
+        .rbi-1-container
+          max-width: 100%
+
+        .rbi-2-container
+          max-width: 100%
+
+          .inner-video
+            max-width: 90%
+
+    p
+      color: white
+
+    .play-button
+      opacity: .8
+      width: 150px
+      z-index: 999
+      height: 150px
+      margin: 0 auto
+      transition: all .3s
+      -webkit-transition: all .3s
+
+      &:hover
+        cursor: pointer
+        opacity: 1
+
+    .play-button-inner
+      top: 50%
+      left: 50%
+      width: 80px
+      height: 80px
+      opacity: .8
+      z-index: 999
+      +align-middle
+      margin: 0 auto
+      position: absolute
+      transition: all .3s
+      -webkit-transition: all .3s
+      transform: translate(-50%, -50%)
+
+      &:hover
+        cursor: pointer
+        opacity: 1
+
+    .flex-video
+      top: 50%
+      left: 50%
+      z-index: 2
+      width: auto
+      height: auto
+      display: none
+      min-width: 100%
+      min-height: 100%
+      overflow: hidden
+      position: absolute
+      background-size: cover
+      transform: translate(-50%, -50%)

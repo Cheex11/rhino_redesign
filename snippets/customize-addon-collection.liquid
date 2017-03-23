@@ -1,0 +1,21 @@
+{% capture thehandle %}{{ addon | remove: '"' }}{% endcapture %}
+
+<div class='addon-description'>
+  {{ collections[thehandle].description }}
+</div>
+
+<div class='option-flex-container'>
+  {% for addon_product in collections[thehandle].products %}
+    {% if addon_product.handle == 'rhino-motion' %}{% assign motion = true %}{% else %}{% assign motion = false %}{% endif %}
+    {% if addon_product.id != product.id %}
+      {% assign incart = false %}
+      {% for item in cart.items %}
+        {% if item.product.id == addon_product.id %}
+          {% assign incart = true %}
+        {% endif %}
+      {% endfor %}
+      {% include 'build-product-box' % with product: addon_product %}
+    {% endif %}
+    {% include 'customize-script' with product: addon_product %}
+  {% endfor %}
+</div>

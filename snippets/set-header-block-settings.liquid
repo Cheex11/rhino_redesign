@@ -13,6 +13,10 @@
     text-align: {{ block.settings.align }};
   }
 
+  .rhino-block-{{ block.id }} .hb-container {
+    max-width: {{ block.settings.container_max_width }}px;
+  }
+
   .rhino-block-{{ block.id }} .tagline {
     padding-top: {{ block.settings.tagline-padding }}px;
   }
@@ -26,5 +30,3 @@
   }
 
 </style>
-
-

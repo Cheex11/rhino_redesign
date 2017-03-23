@@ -3,6 +3,10 @@
 
 /* Mixins */
 @import "base/mixins";
+@import "layout/breakpoints";
 
 /* Theme */
+@import "base/base";
+@import "layout/footer";
 @import "views/*";
+@import "modules/*";

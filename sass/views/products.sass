@@ -1,0 +1,68 @@
+.product-header
+  height: 90px
+  margin: 0 auto
+  font-weight: 300
+  margin-top: 15px
+  margin-left: -30px
+  margin-right: -30px
+  margin-bottom: -17px
+  background-color: #F7F7F7
+  font-family: "Lato", Tahoma
+
+  +scale-down("medium")
+    display: none
+
+  .ph-container
+    height: 100%
+    margin: 0 auto
+    max-width: 1200px
+
+    .ph-title
+      width: 20%
+      text-align: center
+      display: inline-block
+
+      &:hover
+        cursor: pointer
+
+    .ph-buy
+      width: 20%
+      +align-middle
+      margin-top: 5px
+      text-align: center
+      vertical-align: top
+      display: inline-block
+
+      .buy-button
+        color: white
+        height: 40px
+        width: 150px
+        margin: 0 auto
+        line-height: 2.5
+        background-color: #007EDD
+
+    .ph-flex
+      width: 58%
+      height: 100%
+      flex-direction: row
+      align-items: center
+      display: inline-flex
+      justify-content: flex-end
+
+      .ph-menu-item
+        height: 100%
+        +align-middle
+        margin-left: 20px
+        white-space: nowrap
+        box-sizing: border-box
+
+        &:hover
+          margin-top: 3px
+          cursor: pointer
+          height: calc(100% - 3px)
+          border-bottom: 3px solid #0080DA
+
+        &.active
+          margin-top: 3px
+          height: calc(100% - 3px)
+          border-bottom: 3px solid #0080DA

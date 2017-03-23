@@ -1,0 +1,58 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<div class="content product" data-section-id="{{ section.id }}" data-section-type="product" itemscope itemtype="http://schema.org/Product">
+  <div class="item">
+    <div class="left">
+      {% include 'product-images' %}
+    </div>
+    <div class="right">
+      <a class="title" href="{{ product.url }}">
+        <h1 itemprop="name">{{ product.title }}</h1>
+      </a>
+      <h1 itemprop="name">{{ product.title }}</h1>
+      {% include 'product-offers' %}
+      {% include 'product-form' %}
+      {% include 'product-description' %}
+      {% include 'product-share' %}
+    </div>
+    {% include 'product-close' %}
+    {% include 'product-script' %}
+  </div>
+  {% include 'product-metas' %}
+</div>
+
+{% schema %}
+{
+  "name": "Product information",
+  "settings": [
+    {
+      "type": "select",
+      "id": "variants_type",
+      "label": "Show product options as",
+      "default": "radios",
+      "options": [
+        {
+          "value": "radios",
+          "label": "Buttons"
+        },
+        {
+          "value": "dropdowns",
+          "label": "Dropdowns"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "zoom_enable",
+      "label": "Enable image zoom",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "social_sharing_products",
+      "label": "Enable sharing",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

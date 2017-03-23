@@ -1,0 +1,78 @@
+.search-select-wrap
+  min-width: 230px
+  margin-top: 10px
+  position: relative
+  background-color: #fff
+
+  & + select
+    display: none
+
+  .active-item
+    border: 1px solid #ccc
+    padding: 15px 25px
+    position: relative
+    background-color: #fff
+    z-index: 2
+    cursor: pointer
+
+    &.opened
+      box-shadow: 0 0 15px rgba(0, 0, 0, .15)
+
+    .name
+      font-size: 16px
+      font-weight: 500
+
+    .icon-ui-bundle-dropdown
+      +vert-center
+      right: 25px
+      font-size: 25px
+      margin-top: 3px
+
+
+  .search-dropdown
+    z-index: 300
+    border: 1px solid #ccc
+    position: absolute
+    top: 50px
+    left: 0
+    width: calc(100% - 2px)
+    padding: 0
+    background-color: #fff
+    box-shadow: 0 0 15px rgba(0, 0, 0, .15)
+    max-height: 400px
+    overflow-y: auto
+    overflow-x: hidden
+    display: none
+
+    &.active
+      display: block
+
+  input
+    border: 1px solid #ccc
+    width: calc(100% - 40px)
+    padding: 10px
+    background-color: #F7F7F7
+    margin: 10px
+
+  .results
+    span
+      display: block
+      padding: 15px 25px
+      color: black
+      position: relative
+      cursor: pointer
+      font-weight: 500
+      font-size: 16px
+
+      &:hover
+        background-color: #419BF9
+        color: white
+
+  .searching
+    color: #999
+    padding: 50px 0
+    text-align: center
+    display: none
+
+    &.active
+      display: block

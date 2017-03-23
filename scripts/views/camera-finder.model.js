@@ -1,57 +1,56 @@
-// Rhino.CameraFinder = (function($) {
-//   var waiting = false;
-//   var data;
+Colors.CameraFinder = (function($) {
+  var waiting = false;
+  var data;
 
-//   function parseData() {
-//     data = data.feed.entry;
-//     // data = _.groupBy(data.feed.entry, function(entry) {
-//     //   return entry.gsx$cable.$t;
-//     // });
-//   }
+  console.log('in the camera finder model!')
 
-//   function fetch(callback) {
-//     if (waiting) {
-//       return false;
-//     }
+  function parseData() {
+    data = data.feed.entry;
+  }
 
-//     waiting = true;
-//     var url = 'https://spreadsheets.google.com/feeds/list/1Z5YFLfZ_UkAWvJRY9mKZbNvegNbSTJ0F0CXqVdyhePw/od6/public/values?alt=json-in-script&callback=?';
+  function fetch(callback) {
+    if (waiting) {
+      return false;
+    }
 
-//     $.getJSON(url, function(response) {
-//       waiting = false;
-//       data = response;
-//       parseData();
-//       callback();
-//     });
-//   }
+    waiting = true;
+    var url = 'https://spreadsheets.google.com/feeds/list/1Z5YFLfZ_UkAWvJRY9mKZbNvegNbSTJ0F0CXqVdyhePw/od6/public/values?alt=json-in-script&callback=?';
 
-//   function getData(callback) {
-//     if (!data) {
-//       fetch(function() {
-//         callback(data);
-//       });
-//     } else {
-//       return callback(data);
-//     }
-//   }
+    $.getJSON(url, function(response) {
+      waiting = false;
+      data = response;
+      parseData();
+      callback();
+    });
+  }
 
-//   function search(term, callback) {
-//     getData(function(data) {
-//       var results = _.filter(data, function(camera) {
-//         var PATTERN = new RegExp(term, 'i');
-//         if (camera.gsx$camera.$t.search(PATTERN) > -1) {
-//           return true;
-//         }
-//       });
+  function getData(callback) {
+    if (!data) {
+      fetch(function() {
+        callback(data);
+      });
+    } else {
+      return callback(data);
+    }
+  }
 
-//       results = results ? results : false;
+  function search(term, callback) {
+    getData(function(data) {
+      var results = _.filter(data, function(camera) {
+        var PATTERN = new RegExp(term, 'i');
+        if (camera.gsx$camera.$t.search(PATTERN) > -1) {
+          return true;
+        }
+      });
 
-//       callback(results);
-//     });
-//   }
+      results = results ? results : false;
 
-//   return {
-//     data: getData,
-//     search: search
-//   }
-// })(Rhino.jQuery);
+      callback(results);
+    });
+  }
+
+  return {
+    data: getData,
+    search: search
+  }
+})(jQuery);

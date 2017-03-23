@@ -1,0 +1,33 @@
+<div class='option
+    {% if primary %}active{% endif %}
+    {% if required %}required{% endif %}
+    {% if product.handle == 'rhino-arc' or product.handle == 'rhino-flywheel' or motion %}single{% else %}double{% endif %}'>
+
+    {% if product.handle == 'rhino-arc' or product.handle == 'rhino-flywheel' or motion %}
+      <div class='inner-left'>
+        {% for image in product.images %}
+          {% if forloop.index == 1 %}
+            <img src="{{ image.src | img_url: 'large' }}">
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    <div class='inner-right inner-element'>
+      <div class='details'>
+        {{ product.title | remove: "Rhino Slider EVO " | remove: "Carrying " }}<br>
+        {{ product.price | money_with_currency }}
+        {% if motion %}
+          {% for option in product.options_with_values %}
+            <select name="id"
+              class="variant-select
+                    required-variant
+                    cable-select"
+              placeholder="Search for your camera...">
+              <option value="">What camera do you use?</option>
+            </select>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+    {% include 'customize-backend' %}
+</div>

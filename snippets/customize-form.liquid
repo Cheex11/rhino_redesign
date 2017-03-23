@@ -1,0 +1,14 @@
+<form action="/cart/add" method="post">
+  {% if collection %}
+    {% for product in collection.products %}
+      {% include 'customize-form-product' with required: true %}
+      {% include 'customize-script' %}
+    {% endfor %}
+  {% else %}
+    {% include 'customize-form-product' with required: true %}
+    {% include 'customize-script' %}
+  {% endif %}
+  {% for addon in addons %}
+    {% include 'customize-addon-collection' %}
+  {% endfor %}
+</form>

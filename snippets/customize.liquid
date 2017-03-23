@@ -1,0 +1,62 @@
+{% if collection %}
+  {% assign prodcut_title = collection.title %}
+  {% assign addons = collection.metafields.customize.addon_array | split: "," %}
+{% else %}
+  {% assign prodcut_title = product.title %}
+  {% assign addons = product.metafields.customize.addon_array | split: "," %}
+{% endif %}
+
+{% capture sectionId %}customize{% endcapture %}
+
+<div class='gutter'
+  id='gutter'
+  data-section-id="customize"
+  data-section-type="post-product"
+  itemscope
+  itemtype="http://schema.org/Product">
+  <div id='customize-container'>
+    <div class='flex-column visual-column'>
+      <div id="visual-container">
+        {% if collection %}
+          {% if collection.image %}
+            <img src="{{ collection.image | img_url: 'large' }}">
+          {% endif %}
+        {% else %}
+          {% for image in product.images %}
+            {% if forloop.index == 1 %}
+              <img src="{{ image.src | img_url: 'large' }}">
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        <div id='more-images-container'>
+          <img class="link-arrow" src="{{ 'link_arrow.png' | asset_url }}">
+          <div id='images-text'>View more images</div>
+        </div>
+        <div id='accessories-container'>
+          <div id='accessories-header'>
+            Accessories
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='flex-column options-column'>
+      <div class='options-container'>
+        <div class='product-title'>
+          {{ prodcut_title }}
+        </div>
+        {% include 'customize-form' %}
+      </div>
+    </div>
+  </div>
+  <div id='customize-footer'>
+    <div class='footer-inner'>
+      <div class='footer-column left'></div>
+      <div class='footer-column right'>
+        <div id='total-price'> Price: <span id='price-span'>0</span> </div>}
+        <button id="addToCart-customize" type="submit" class="btn border disabled" disabled>
+          {{ 'products.product.unavailable' | t }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

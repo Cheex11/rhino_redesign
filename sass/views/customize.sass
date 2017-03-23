@@ -1,0 +1,160 @@
+.gutter
+  margin: 17px
+  color: #7C7C7C
+  font-weight: 300
+  position: relative
+  background-color: #F7F7F7
+  font-family: 'Lato', sans-serif
+
+  +respond-to("small")
+    margin: 17px 0px
+
+  #customize-container
+    display: flex
+    margin: 0 auto
+    max-width: 1620px
+    min-height: 2000px
+
+    +respond-to("small")
+      padding: 17px
+
+    .flex-column
+      width: 50%
+
+    .visual-column
+
+      #visual-container
+        position: fixed
+        top: 110px
+        padding-left: 6%
+        text-align: center
+
+        img
+          margin: 0 auto
+
+        #more-images-container
+          color: #007EDD
+
+          #images-text
+            display: inline-block
+            margin: 0px 12px
+
+        #accessories-container
+          padding-top: 55px
+          position: relative
+
+          #accessories-header
+            color: #7C7C7C
+            font-size: 22px
+            display: inline-block
+
+    .options-column
+
+      .options-container
+        max-width: 460px
+        padding-right: 6%
+
+      .product-title
+        font-size: 30px
+        padding: 20px 0px
+        border-bottom: 1px solid #C9C9C9
+
+      .addon-description
+        font-size: 16px
+        padding: 20px 0px
+
+      .option-heading
+        font-size: 16px
+        padding-top: 25px
+        padding-bottom: 20px
+
+      .option-flex-container
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+        border: 0
+        background: transparent
+
+        &.addon-product
+          flex-direction: column
+
+        .option
+          z-index: 1
+          padding: 2%
+          cursor: pointer
+          min-height: 65px
+          position: relative
+          margin-bottom: 15px
+          background-color: #FFFFFF
+
+          input[type="radio"]
+            display: none
+
+          &.single
+            z-index: 300
+            display: -webkit-box
+            display: -ms-flexbox
+            display: flex
+            -webkit-box-pack: justify
+            -ms-flex-pack: justify
+            justify-content: space-between
+
+            .details
+              +vert-center
+
+          &:hover
+            -moz-box-shadow: 2px 2px 5px rgba(60,25,28,0.4)
+            -webkit-box-shadow: 2px 2px 5px rgba(60,25,28,0.4)
+            box-shadow: 2px 2px 5px rgba(60,25,28,0.4)
+
+          &.addon-product, &.single
+            width: 100%
+            height: 130px
+
+          &.variant, &.double
+            width: 48%
+            height: 65px
+
+          &.active
+            border: 2px solid #419BF9
+
+          .inner-left
+            width: 165px
+            min-width: 165px
+
+            img
+              top: 50%
+              max-width: 100%
+              position: relative
+              transform: translateY(-50%)
+
+          .inner-right
+            position: relative
+            -webkit-box-flex: 1
+            -ms-flex-positive: 1
+            flex-grow: 1
+
+.customizeProductSelect
+  display: none
+
+  &.active
+    display: block
+
+#customize-footer
+  left: 0
+  bottom: 0
+  width: 100%
+  z-index: 10
+  height: 120px
+  font-size: 0px
+  position: fixed
+  background-color: #fff
+
+  &.attach
+    position: absolute
+    bottom: 17px
+
+  .footer-column
+    width: 50%
+    display: inline-block
+    font-size: 16px

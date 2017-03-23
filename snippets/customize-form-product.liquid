@@ -1,0 +1,13 @@
+{% comment %}<input type="hidden" id="quantity" name="quantity" value="1">{% endcomment %}
+
+{% if product.title != 'motion' && product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+  <div class='option-flex-container'>
+    {% include 'build-product-box' with primary: true %}
+  </div>
+{% elsif product.title == 'Rhino Motion' %}
+  <div class='option-flex-container'>
+    {% include 'build-product-box' with motion:true %}
+  </div>
+{% else %}
+  {% include 'build-variant-box' %}
+{% endif %}

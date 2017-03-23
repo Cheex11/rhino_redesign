@@ -1,0 +1,17 @@
+<div class='option-flex-container'>
+  {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+    {% for option in product.options_with_values %}
+      {% if option.name == "Cable" %}
+        <select name="id" class="variant-select {% if option.name == "Cable" %}cable-select{% endif %}" {% if cable %}placeholder="Search for your camera..."{% endif %} required>
+          <option value="">What camera do you use?</option>
+        </select>
+      {% else %}
+        <div class="radio-wrapper js">
+          {% unless option.name == 'Default' or option.name == 'Title' %}
+            <label for="SingleOptionSelector-{{ section.id }}-{{ forloop.index0 }}">Add</label>
+          {% endunless %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endunless %}
+</div>

@@ -1,0 +1,14 @@
+<select name="id" class="customizeProductSelect" data-product-handle="{{ product.handle }}" class="product-variants">
+  {% for variant in product.variants %}
+    {% if variant.available %}
+      <option value="{{variant.id}}" data-sku="{{ variant.sku }}" {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}>
+        {{ variant.title }} - {{ variant.price | money_with_currency }}
+      </option>
+    {% else %}
+      <option disabled="disabled">
+        {{ variant.title }} - {{ 'products.product.sold_out_html' | t | strip_html }}
+      </option>
+    {% endif %}
+  {% endfor %}
+</select>
+{% include 'post-product-script' %}
